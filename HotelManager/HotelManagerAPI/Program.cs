@@ -1,3 +1,6 @@
+using HotelManagerAPI.DbContexts;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace HotelManagerAPI
 {
@@ -6,6 +9,17 @@ namespace HotelManagerAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                 .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day,
+                               outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}")
+                .CreateLogger();
+
+            builder.Host.UseSerilog();
+
+            builder.Services.AddDbContext<HotelManagerDbContext>(options =>
+                    options.UseSqlite("Data Source=hotel.db"));
 
             // Add services to the container.
 
@@ -26,7 +40,6 @@ namespace HotelManagerAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
