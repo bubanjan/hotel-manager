@@ -23,6 +23,13 @@ namespace HotelManagerAPI.Repositories
                             .FirstOrDefaultAsync();
         }
 
+        public async Task<Guest> GetGuestEntityAsync(Guid guestId)
+        {
+            return await _context.Guests
+                            .Where(x => x.Id == guestId)
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task AddGuestAsync(Guest guest)
         {
             await _context.Guests.AddAsync(guest);

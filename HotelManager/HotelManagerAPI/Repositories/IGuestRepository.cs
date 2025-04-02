@@ -7,6 +7,8 @@ namespace HotelManagerAPI.Repositories
     {
         Task<GuestDto> GetGuestAsync(Guid guestId);
 
+        Task<Guest> GetGuestEntityAsync(Guid guestId);
+
         Task AddGuestAsync(Guest guest);
 
         Task SaveChangesAsync();

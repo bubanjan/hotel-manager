@@ -40,5 +40,22 @@ namespace HotelManagerAPI.Controllers
 
             return CreatedAtRoute("GetGuest", new { id = estateToReturn.Id }, estateToReturn);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateGuest(Guid id, GuestForUpdateDto guestUpdateData)
+        {
+            if (guestUpdateData == null)
+            {
+                return BadRequest("Guest update data can not be null.");
+            }
+
+            var guestEntity = await _guestRepository.GetGuestEntityAsync(id);
+
+            GuestMapper.UpdateGuest(guestEntity, guestUpdateData);
+
+            await _guestRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

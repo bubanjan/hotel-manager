@@ -40,5 +40,15 @@ namespace HotelManagerAPI.Mappers
                 Email = guest.Email,
             };
         }
+
+        public static void UpdateGuest(Guest guest, GuestForUpdateDto guestUpdateData)
+        {
+            {
+                guest.FirstName = guestUpdateData.FirstName;
+                guest.LastName = guestUpdateData.LastName;
+                guest.Telephone = guestUpdateData.Telephone;
+                guest.Email = guestUpdateData.Email;
+            };
+        }
     }
 }

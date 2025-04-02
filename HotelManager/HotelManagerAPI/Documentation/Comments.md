@@ -19,7 +19,7 @@ For authentication I chose http only cookie like option with good security.
 
 I like to devide projects in small tasks, to follow what is done beside github repo.
 
-### Base tasks:
+### tasks:
 
 - [ ] fix comments.md formating code
 - [x] install serielog package
@@ -27,8 +27,25 @@ I like to devide projects in small tasks, to follow what is done beside github r
 - [ ] add entity class Guest
 - [ ] add DbContext
 - [ ] add DbContext and Serielog configurations in Program.cs
-- [ ] add CRUD methods in Controller
-- [ ] add first migration and run database-update
+- [ ] add first migration and run database-update  
+- [ ] add Controller
+- [ ] add Repository
+- [ ] register Repository in DI
+- [ ] add DTOs
+- [ ] add Mapper
 
-### CRUD operations
+- [ ] get Guest
+- [ ] create Guest
+- [ ] delete Guest
+- [ ] update Guest
+- [ ] get Guests
 
+- [ ] try/ catch + logging
+- [ ] paggination
+- [ ] text search
+- [ ] order by name (ascending, descending)
+
+- [ ] Authentication/authorization
+- [ ] add authorization on controller actions
+
+- [ ] Test all with swagger
