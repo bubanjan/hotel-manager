@@ -23,21 +23,21 @@ I like to devide projects in small tasks, to follow what is done beside github r
 
 - [ ] fix comments.md formating code
 - [x] install serielog package
-- [ ] install sqlite packages
-- [ ] add entity class Guest
-- [ ] add DbContext
-- [ ] add DbContext and Serielog configurations in Program.cs
-- [ ] add first migration and run database-update  
-- [ ] add Controller
-- [ ] add Repository
-- [ ] register Repository in DI
-- [ ] add DTOs
-- [ ] add Mapper
+- [x] install sqlite packages
+- [x] add entity class Guest
+- [x] add DbContext
+- [x] add DbContext and Serielog configurations in Program.cs
+- [x] add first migration and run database-update  
+- [x] add Controller
+- [x] add Repository
+- [x] register Repository in DI
+- [x] add DTOs
+- [x] add Mapper
 
-- [ ] get Guest
-- [ ] create Guest
+- [x] get Guest
+- [x] create Guest
 - [ ] delete Guest
-- [ ] update Guest
+- [x] update Guest
 - [ ] get Guests
 
 - [ ] try/ catch + logging
