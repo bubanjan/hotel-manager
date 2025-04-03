@@ -71,14 +71,22 @@ namespace HotelManagerAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<GuestDto>> CreateGuest(GuestForCreationDto guestForCreation)
         {
-            var guest = GuestMapper.MapToGuest(guestForCreation);
+            try
+            {
+                var guest = GuestMapper.MapToGuest(guestForCreation);
 
-            await _guestRepository.AddGuestAsync(guest);
-            await _guestRepository.SaveChangesAsync();
+                await _guestRepository.AddGuestAsync(guest);
+                await _guestRepository.SaveChangesAsync();
 
-            var estateToReturn = GuestMapper.MapToGuestDto(guest);
+                var guestToReturn = GuestMapper.MapToGuestDto(guest);
 
-            return CreatedAtRoute("GetGuest", new { id = estateToReturn.Id }, estateToReturn);
+                return CreatedAtRoute("GetGuest", new { id = guestToReturn.Id }, guestToReturn);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in CreateGuest");
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
+            }
         }
 
         [HttpPut("{id}")]
@@ -88,26 +96,41 @@ namespace HotelManagerAPI.Controllers
             {
                 return BadRequest("Guest update data can not be null.");
             }
+            try
+            {
+                var guestEntity = await _guestRepository.GetGuestEntityAsync(id);
+                GuestMapper.UpdateGuest(guestEntity, guestUpdateData);
+                await _guestRepository.SaveChangesAsync();
 
-            var guestEntity = await _guestRepository.GetGuestEntityAsync(id);
-            GuestMapper.UpdateGuest(guestEntity, guestUpdateData);
-            await _guestRepository.SaveChangesAsync();
-
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in UpdateGuest for ID {GuestId}", id);
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteGuest(Guid id)
         {
-            var isDeleted = await _guestRepository.DeleteGuestAsync(id);
-
-            if (isDeleted == false)
+            try
             {
-                return NotFound();
-            }
+                var isDeleted = await _guestRepository.DeleteGuestAsync(id);
 
-            await _guestRepository.SaveChangesAsync();
-            return NoContent();
+                if (isDeleted == false)
+                {
+                    return NotFound();
+                }
+
+                await _guestRepository.SaveChangesAsync();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in DeleteGuest for ID {GuestId}", id);
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
+            }
         }
     }
 }
