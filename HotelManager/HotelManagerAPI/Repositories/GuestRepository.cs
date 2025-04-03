@@ -22,14 +22,17 @@ namespace HotelManagerAPI.Repositories
 
             if (string.IsNullOrEmpty(searchWord) == false)
             {
-                collection = collection.Where(x => x.FirstName != null && x.FirstName.ToLower().Contains(searchWord.ToLower()));
+                collection = collection.Where(x => x.FirstName != null && x.LastName != null &&
+                                             (x.FirstName.ToLower() + " " + x.LastName.ToLower()).Contains(searchWord.ToLower()));
             }
 
             var totalItemsCount = await collection.CountAsync();
 
             var paginationMetaData = new PaginationMetadata(totalItemsCount, pageSize, pageNumber);
 
-            var collectionToReturn = await collection.OrderBy(o => o.FirstName)
+            var collectionToReturn = await collection
+                .OrderBy(o => o.FirstName)
+                .ThenBy(o => o.LastName)
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
                 .Select(GuestMapper.ToGuestDto())

@@ -1,8 +1,8 @@
 ﻿## Project plan
 
 I chose the standard pattern of Controllers + Repository. I personally like this approach the most because it is commonly recommended by Microsoft.   
-So I think that it is more tested than other patterns.  
-It also gives you more control and results in less boilerplate code compared to some other patterns.  
+So I think that it is more tested by big team of proffessionals compared other patterns.  
+It also gives you more control and results in less boilerplate code compared to some other patterns. And Swagger works good with it by default.
 I chosed to not use service between controller and repository, becasue I think that in case of this project,  
 it would be just uneccesary complication.
 
@@ -21,7 +21,6 @@ I like to devide projects in small tasks, to follow what is done beside github r
 
 ### tasks:
 
-- [ ] fix comments.md formating code
 - [x] install serielog package
 - [x] install sqlite packages
 - [x] add entity class Guest
@@ -52,3 +51,4 @@ I like to devide projects in small tasks, to follow what is done beside github r
 - [ ] try/ catch + logging in auth.controller
 
 - [ ] Test all with swagger
+- [ ] fix comments.md formating code
