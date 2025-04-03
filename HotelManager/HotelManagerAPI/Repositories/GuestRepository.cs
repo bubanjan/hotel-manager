@@ -2,6 +2,7 @@
 using HotelManagerAPI.Entities;
 using HotelManagerAPI.Mappers;
 using HotelManagerAPI.Models;
+using HotelManagerAPI.Pagination;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagerAPI.Repositories
@@ -13,6 +14,28 @@ namespace HotelManagerAPI.Repositories
         public GuestRepository(HotelManagerDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<(IEnumerable<GuestDto>, PaginationMetadata)> GetGuestsAsync(int pageNumber, int pageSize, string? searchWord)
+        {
+            var collection = _context.Guests.AsQueryable();
+
+            if (string.IsNullOrEmpty(searchWord) == false)
+            {
+                collection = collection.Where(x => x.FirstName != null && x.FirstName.ToLower().Contains(searchWord.ToLower()));
+            }
+
+            var totalItemsCount = await collection.CountAsync();
+
+            var paginationMetaData = new PaginationMetadata(totalItemsCount, pageSize, pageNumber);
+
+            var collectionToReturn = await collection.OrderBy(o => o.FirstName)
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .Select(GuestMapper.ToGuestDto())
+                .ToListAsync();
+
+            return (collectionToReturn, paginationMetaData);
         }
 
         public async Task<GuestDto> GetGuestAsync(Guid guestId)
