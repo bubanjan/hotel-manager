@@ -40,14 +40,15 @@ I like to devide projects in small tasks, to follow what is done beside github r
 - [x] create Guest
 - [x] delete Guest
 - [x] update Guest
-- [ ] get Guests
+- [x] get Guests
 
-- [ ] try/ catch + logging
-- [ ] paggination
+- [x] try/ catch + logging
+- [x] paggination
 - [ ] text search
 - [ ] order by name (ascending, descending)
 
 - [ ] Authentication/authorization
 - [ ] add authorization on controller actions
+- [ ] try/ catch + logging in auth.controller
 
 - [ ] Test all with swagger
