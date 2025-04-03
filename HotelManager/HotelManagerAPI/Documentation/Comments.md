@@ -33,7 +33,7 @@ I like to devide projects in small tasks, to follow what is done beside github r
 - [x] add DTOs
 - [x] add Mapper
 
-- [ ] add full name in dto, and searching by full name.. fname + lname..  
+- [x] add full name in dto
 
 - [x] get Guest
 - [x] create Guest
@@ -42,9 +42,9 @@ I like to devide projects in small tasks, to follow what is done beside github r
 - [x] get Guests
 
 - [x] try/ catch + logging
-- [x] paggination
-- [ ] text search
-- [ ] order by name (ascending, descending)
+- [x] pagination
+- [x] text search full name
+- [x] order by full name
 
 - [ ] Authentication/authorization
 - [ ] add authorization on controller actions
