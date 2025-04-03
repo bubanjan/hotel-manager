@@ -57,5 +57,19 @@ namespace HotelManagerAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteGuest(Guid id)
+        {
+            var isDeleted = await _guestRepository.DeleteGuestAsync(id);
+
+            if (isDeleted == false)
+            {
+                return NotFound();
+            }
+
+            await _guestRepository.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }

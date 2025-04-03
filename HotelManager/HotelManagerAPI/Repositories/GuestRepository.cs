@@ -23,11 +23,20 @@ namespace HotelManagerAPI.Repositories
                             .FirstOrDefaultAsync();
         }
 
+        public async Task<bool> DeleteGuestAsync(Guid guestId)
+        {
+            var guest = await _context.Guests.FirstOrDefaultAsync(x => x.Id == guestId);
+            if (guest == null)
+            {
+                return false;
+            };
+            _context.Guests.Remove(guest);
+            return true;
+        }
+
         public async Task<Guest> GetGuestEntityAsync(Guid guestId)
         {
-            return await _context.Guests
-                            .Where(x => x.Id == guestId)
-                            .FirstOrDefaultAsync();
+            return await _context.Guests.FirstOrDefaultAsync(x => x.Id == guestId);
         }
 
         public async Task AddGuestAsync(Guest guest)

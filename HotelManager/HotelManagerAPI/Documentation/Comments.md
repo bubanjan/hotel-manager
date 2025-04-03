@@ -34,6 +34,8 @@ I like to devide projects in small tasks, to follow what is done beside github r
 - [x] add DTOs
 - [x] add Mapper
 
+- [ ] add full name in dto, and searching by full name.. fname + lname..  
+
 - [x] get Guest
 - [x] create Guest
 - [ ] delete Guest

@@ -11,6 +11,8 @@ namespace HotelManagerAPI.Repositories
 
         Task AddGuestAsync(Guest guest);
 
+        Task<bool> DeleteGuestAsync(Guid id);
+
         Task SaveChangesAsync();
     }
 }
