@@ -13,6 +13,7 @@ namespace HotelManagerAPI.Models
         public string LastName { get; set; }
 
         [Required]
+        [EmailAddress]
         [MaxLength(250)]
         public string Email { get; set; }
 

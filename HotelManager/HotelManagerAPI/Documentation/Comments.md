@@ -38,7 +38,7 @@ I like to devide projects in small tasks, to follow what is done beside github r
 
 - [x] get Guest
 - [x] create Guest
-- [ ] delete Guest
+- [x] delete Guest
 - [x] update Guest
 - [ ] get Guests
 
