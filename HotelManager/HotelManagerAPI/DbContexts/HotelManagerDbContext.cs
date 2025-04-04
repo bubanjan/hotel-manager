@@ -10,5 +10,6 @@ namespace HotelManagerAPI.DbContexts
         }
 
         public DbSet<Guest> Guests { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
