@@ -1,6 +1,7 @@
 ﻿using HotelManagerAPI.Mappers;
 using HotelManagerAPI.Models;
 using HotelManagerAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -20,6 +21,7 @@ namespace HotelManagerAPI.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = "Admin,Receptionist")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GuestDto>>> GetGuests(int pageNumber = 1, int pageSize = 10, string? searchWord = "")
         {
@@ -48,6 +50,7 @@ namespace HotelManagerAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Receptionist")]
         [HttpGet("{id}", Name = "GetGuest")]
         public async Task<ActionResult<GuestDto>> GetGuest(Guid id)
         {
@@ -68,6 +71,7 @@ namespace HotelManagerAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Receptionist")]
         [HttpPost]
         public async Task<ActionResult<GuestDto>> CreateGuest(GuestForCreationDto guestForCreation)
         {
@@ -89,6 +93,7 @@ namespace HotelManagerAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Receptionist")]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateGuest(Guid id, GuestForUpdateDto guestUpdateData)
         {
@@ -111,6 +116,7 @@ namespace HotelManagerAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteGuest(Guid id)
         {

@@ -18,6 +18,25 @@ For authentication, I plan to use HTTP-only cookies, as they offer good security
 
 I like to divide projects into small, trackable tasks, in addition to using a GitHub repository for version control.
 
+To test roles use:
+
+admin:
+{
+  "userName": "Admin1",
+  "email": "admin1@gmail.com",
+  "password": "admin555",
+  "role": "Admin"
+}
+
+recetionist:
+{
+  "userName": "Receptionist1",
+  "email": "johnreception@gmail.com",
+  "password": "reception333",
+  "role": "Receptionist"
+}
+
+
 ### tasks:
 
 - [x] install serielog package

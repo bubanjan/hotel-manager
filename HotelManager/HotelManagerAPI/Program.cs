@@ -1,7 +1,10 @@
 using HotelManagerAPI.DbContexts;
 using HotelManagerAPI.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
 
 namespace HotelManagerAPI
 {
@@ -26,11 +29,41 @@ namespace HotelManagerAPI
                 // Add services to the container.
 
                 builder.Services.AddControllers();
+
+                builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.Events = new JwtBearerEvents
+                        {
+                            OnMessageReceived = context =>
+                            {
+                                if (context.Request.Cookies.ContainsKey("htlmngr215ho"))
+                                {
+                                    context.Token = context.Request.Cookies["htlmngr215ho"];
+                                }
+                                return Task.CompletedTask;
+                            }
+                        };
+
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+                            ValidIssuer = builder.Configuration["Authentication:Issuer"],
+                            ValidAudience = builder.Configuration["Authentication:Audience"],
+                            IssuerSigningKey = new SymmetricSecurityKey(
+                                Encoding.UTF8.GetBytes(builder.Configuration["Authentication:SecretForKey"]))
+                        };
+                    });
+
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
 
                 builder.Services.AddScoped<IGuestRepository, GuestRepository>();
+                builder.Services.AddScoped<IUserRepository, UserRepository>();
 
                 var app = builder.Build();
 
@@ -43,6 +76,7 @@ namespace HotelManagerAPI
 
                 app.UseHttpsRedirection();
 
+                app.UseAuthentication();
                 app.UseAuthorization();
 
                 app.MapControllers();
