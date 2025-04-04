@@ -1,54 +1,53 @@
 ﻿## Project plan
 
-I chose the standard pattern of Controllers + Repository. I personally like this approach the most because it is commonly recommended by Microsoft.   
-So I think that it is more tested by big team of proffessionals compared other patterns.  
-It also gives you more control and results in less boilerplate code compared to some other patterns. And Swagger works good with it by default.
-I chosed to not use service between controller and repository, becasue I think that in case of this project,  
-it would be just uneccesary complication.
+I chose the standard Controller + Repository pattern. I personally prefer this approach because it's commonly recommended by Microsoft and widely adopted in the .NET ecosystem.  
+It's also well-tested by large teams of professionals and tends to require less boilerplate code compared to some other architectural patterns. Additionally, it integrates well with Swagger out of the box.  
 
-I chose sqlite because it suits good for small project.
+I decided not to use a service layer between the controller and repository, as I believe that in the context of this project, it would be an unnecessary complication.  
 
-My plan is to add:
+I chose SQLite as the database since it's well-suited for small projects.  
 
-- mapping between entity classes and DTOs
-- try/catch in controller action methods 
-- logging
-- authentication/authorisation with Admin and Receptionist permission role
+My plan includes:
 
-For authentication I chose http only cookie like option with good security. 
+- Mapping between entity classes and DTOs
+- Adding try/catch blocks in controller action methods 
+- Implementing logging
+- Adding authentication and authorization with Admin and Receptionist roles
 
-I like to devide projects in small tasks, to follow what is done beside github repo.
+For authentication, I plan to use HTTP-only cookies, as they offer good security.
+
+I like to divide projects into small, trackable tasks, in addition to using a GitHub repository for version control.
 
 ### tasks:
 
 - [x] install serielog package
 - [x] install sqlite packages
-- [x] add entity class Guest
+- [x] add Guest entity class 
 - [x] add DbContext
-- [x] add DbContext and Serielog configurations in Program.cs
+- [x] Configure DbContext and Serilog in Program.cs
 - [x] add first migration and run database-update  
 - [x] add Controller
 - [x] add Repository
-- [x] register Repository in DI
+- [x] register Repository in DI container
 - [x] add DTOs
 - [x] add Mapper
 
-- [x] add full name in dto
+- [x] add full name to dto
 
 - [x] get Guest
 - [x] create Guest
 - [x] delete Guest
 - [x] update Guest
-- [x] get Guests
+- [x] get Guests collection
 
 - [x] try/ catch + logging
 - [x] pagination
-- [x] text search full name
+- [x] text search by full name
 - [x] order by full name
 
-- [ ] Authentication/authorization
-- [ ] add authorization on controller actions
-- [ ] try/ catch + logging in auth.controller
+- [ ] add Authentication/authorization
+- [ ] add role based authorization on controller actions
+- [ ] try/catch + logging in auth.controller
 
-- [ ] Test all with swagger
-- [ ] fix comments.md formating code
+- [ ] Test everything with swagger
+- [ ] fix comments.md code
