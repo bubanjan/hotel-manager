@@ -77,10 +77,11 @@ namespace HotelManagerAPI.Controllers
                     Expires = DateTime.UtcNow.AddMonths(6)
                 };
 
+                var expirationDate = jwtSecurityToken.ValidTo;
                 Response.Cookies.Append("htlmngr215ho", tokenToReturn, cookieOptions);
 
                 _logger.LogInformation("User {UserName} authenticated successfully.", user.UserName);
-                return Ok(new { message = "Authenticated successfully" });
+                return Ok(new { message = "Authenticated successfully", expires = expirationDate });
             }
             catch (Exception ex)
             {
@@ -94,23 +95,6 @@ namespace HotelManagerAPI.Controllers
         {
             Response.Cookies.Delete("htlmngr215ho");
             return Ok(new { message = "Logged out successfully" });
-        }
-
-        [Authorize]
-        [HttpGet("check-user")]
-        public IActionResult GetUserInfo()
-        {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-            var username = identity?.FindFirst("username")?.Value;
-
-            if (username == null)
-            {
-                _logger.LogWarning("Attempt to access user info without a valid username claim.");
-                return Unauthorized(new { message = "Not authenticated" });
-            }
-
-            _logger.LogInformation("User info retrieved for: {UserName}", username);
-            return Ok(new { username });
         }
 
         [Authorize(Roles = "Admin")]
