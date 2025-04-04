@@ -18,7 +18,7 @@ For authentication, I plan to use HTTP-only cookies, as they offer good security
 
 I like to divide projects into small, trackable tasks, in addition to using a GitHub repository for version control.
 
-To test roles use:
+To log in use roles:
 
 admin:
 {
@@ -28,7 +28,7 @@ admin:
   "role": "Admin"
 }
 
-recetionist:
+receptionist:
 {
   "userName": "Receptionist1",
   "email": "johnreception@gmail.com",
