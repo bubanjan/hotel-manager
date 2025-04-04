@@ -1,9 +1,11 @@
 ﻿## Project plan
 
-I chose the standard Controller + Repository pattern. I personally prefer this approach because it's commonly recommended by Microsoft and widely adopted in the .NET ecosystem.  
-It's also well-tested by large teams of professionals and tends to require less boilerplate code compared to some other architectural patterns. Additionally, it integrates well with Swagger out of the box.  
+I chose the standard Controller + Repository pattern for this Web API. I personally prefer this approach because it's commonly recommended by   
+Microsoft and widely adopted in the .NET ecosystem. It's also well-tested by large teams of professionals and tends to require  
+less boilerplate code compared to some other architectural patterns. Additionally, it integrates well with Swagger out of the box.  
 
-I decided not to use a service layer between the controller and repository, as I believe that in the context of this project, it would be an unnecessary complication.  
+I decided not to use a service layer between the controller and repository, as I believe that in the context of this project,  
+it would be an unnecessary complication.  
 
 I chose SQLite as the database since it's well-suited for small projects.  
 
@@ -68,6 +70,6 @@ receptionist:
 - [x] add role based authorization on controller actions
 - [x] try/catch + logging in auth.controller
 
-- [ ] Test everything with swagger
-- [ ] fix comments.md code
-- [ ] Test if the zipped project works correctly after unzipping
+- [x] Test everything with swagger
+- [x] fix comments.md code
+- [x] Test if the zipped project works correctly after unzipping
