@@ -70,3 +70,4 @@ receptionist:
 
 - [ ] Test everything with swagger
 - [ ] fix comments.md code
+- [ ] Test if the zipped project works correctly after unzipping
