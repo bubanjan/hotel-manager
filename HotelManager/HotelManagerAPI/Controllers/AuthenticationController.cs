@@ -32,7 +32,7 @@ namespace HotelManagerAPI.Controllers
         }
 
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] AuthenticationRequestBody authenticationRequestBody)
+        public async Task<IActionResult> Authenticate(AuthenticationRequestBody authenticationRequestBody)
         {
             try
             {
