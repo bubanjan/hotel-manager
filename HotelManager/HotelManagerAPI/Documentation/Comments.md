@@ -64,9 +64,9 @@ recetionist:
 - [x] text search by full name
 - [x] order by full name
 
-- [ ] add Authentication/authorization
-- [ ] add role based authorization on controller actions
-- [ ] try/catch + logging in auth.controller
+- [x] add Authentication/authorization
+- [x] add role based authorization on controller actions
+- [x] try/catch + logging in auth.controller
 
 - [ ] Test everything with swagger
 - [ ] fix comments.md code
