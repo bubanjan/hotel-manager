@@ -20,6 +20,11 @@ For authentication, I plan to use HTTP-only cookies, as they offer good security
 
 I like to divide projects into small, trackable tasks, in addition to using a GitHub repository for version control.
 
+When I think about the next version of this API, it might be a good idea to add a Booking entity.  
+It would contain data such as check-in and check-out dates, price, room number.  
+The relationship between Guest and Booking would be one-to-many, meaning a single guest could have multiple bookings.    
+
+
 To log in use roles:
 
 admin:
