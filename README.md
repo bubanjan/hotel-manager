@@ -27,17 +27,26 @@ It would contain data such as: GuestId, Id, number of guests, check-in and check
 The relationship between Guest and Booking would be one-to-many, meaning a single guest could have multiple bookings.  
 He can come with friends or family in the room, but only his id would be saved in booking as booking creator.    
 
+---
+
+## Test Users
 
 To log in use roles:
 
-admin:
+### Admin
+
+```json
 {
   "userName": "Admin1",
   "email": "admin1@gmail.com",
   "password": "admin555",
   "role": "Admin"
 }
+```
 
+### Receptionist
+
+```json
 receptionist:
 {
   "userName": "Receptionist1",
@@ -45,7 +54,9 @@ receptionist:
   "password": "reception333",
   "role": "Receptionist"
 }
+```
 
+---
 
 ### tasks:
 
