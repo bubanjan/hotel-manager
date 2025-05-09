@@ -47,7 +47,6 @@ To log in use roles:
 ### Receptionist
 
 ```json
-receptionist:
 {
   "userName": "Receptionist1",
   "email": "johnreception@gmail.com",
