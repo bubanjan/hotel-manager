@@ -57,7 +57,7 @@ To log in use roles:
 
 ---
 
-### tasks:
+### tasks I did:
 
 - [x] install serielog package
 - [x] install sqlite packages
