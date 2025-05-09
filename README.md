@@ -1,4 +1,4 @@
-### Hotel manager API
+# Hotel manager API
 
 ## Project plan
 
